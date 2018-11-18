@@ -11,11 +11,12 @@ import canadian.rookies.model.Login;
 import canadian.rookies.utilities.Jdbc;
 
 public class LoginService {
-	
+
 	private Jdbc jdbc;
 	private Connection conn;
 	private Statement s;
 	private ResultSet rs;
+
 //	synchronized public static LoginService getInstance() {
 //		if(loginService == null) {
 //			loginService = new LoginService();
@@ -27,20 +28,18 @@ public class LoginService {
 //		conn = jdbc.getConnection();
 //		s = jdbc.getStatement(conn);
 //	}
-@SuppressWarnings("finally")
-public List<Login> getLogin() throws Exception {
-	
-	jdbc = new Jdbc();
-	conn = jdbc.getConnection();
-	s = jdbc.getStatement(conn);
-		
+	@SuppressWarnings("finally")
+	public List<Login> getLogin() throws Exception {
+		jdbc = new Jdbc();
+		conn = jdbc.getConnection();
+		s = jdbc.getStatement(conn);
 		List<Login> list = new ArrayList();
 		StringBuffer sql = new StringBuffer();
 		sql.append("select * from UserLogin");
-		
+
 		try {
 			rs = jdbc.getResultSet(s, sql.toString());
-			while(rs.next()) {
+			while (rs.next()) {
 				Login login = new Login();
 				login.setUserName(rs.getString("UserName"));
 				login.setPassword(rs.getString("UserPassword"));
@@ -56,15 +55,11 @@ public List<Login> getLogin() throws Exception {
 		}
 	}
 
-	public void saveNewUser(String uN,String pass,String type ) throws Exception {
-	
-	jdbc = new Jdbc();
-	conn = jdbc.getConnection();
-	s = jdbc.getStatement(conn);
-		
-		
+	public void saveNewUser(String uN, String pass, String type) throws Exception {
+		jdbc = new Jdbc();
+		conn = jdbc.getConnection();
+		s = jdbc.getStatement(conn);
 		StringBuffer sql = new StringBuffer();
-//		sql.append("insert INTO UserLogin VALUES (uN,pass,type)");
 		sql.append("insert INTO UserLogin (UserName,UserPassword,UserType) VALUES (");
 		sql.append(uN);
 		sql.append(",");
@@ -72,22 +67,16 @@ public List<Login> getLogin() throws Exception {
 		sql.append(",");
 		sql.append(type);
 		sql.append(")");
-		
 		try {
-			 jdbc.executeSQL(s, sql.toString());
-			//while(rs.next()) {
-			//	Login login = new Login();
-			//	login.setUserName(rs.getString("UserName"));
-			//	login.setPassword(rs.getString("UserPassword"));
-			//
-			//
+			jdbc.executeSQL(s, sql.toString());
+
 		} catch (Exception e) {
 			e.printStackTrace();
 		} finally {
 			jdbc.closeResultSet(rs);
 			jdbc.closeStatement(s);
 			jdbc.closeConnection(conn);
-			
+
 		}
 	}
 

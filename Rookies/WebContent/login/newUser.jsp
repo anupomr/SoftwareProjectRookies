@@ -11,13 +11,11 @@
 	<h3>
 		Welcome to <i>Canadian Rookie's</i> web
 	</h3>
-
 	<fieldset>
 		<p>Please use the form below to sign up.
 		<form method="post" action="${pageContext.request.contextPath}/newUser">
 			<table border="">
-				<tr>
-		
+				<tr>		
 					<td>User name</td>
 					<td><input type="text" placeholder="User name" name="userName" size="12"
 						maxlength="12"></td>

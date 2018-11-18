@@ -13,7 +13,7 @@
 
 
 <div id="image" align="center" >
-<img src="city-c.jpeg" height="400" width="100%"/>
+<img src="images\city-c.jpeg" height="400" width="100%"/>
 
 </div>
 <div class=navbar id=topnavbar>
