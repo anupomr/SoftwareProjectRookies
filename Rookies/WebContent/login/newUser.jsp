@@ -18,17 +18,17 @@
 				<tr>		
 					<td>User name</td>
 					<td><input type="text" placeholder="User name" name="userName" size="12"
-						maxlength="12"></td>
+						maxlength="12" required></td>
 				</tr>
 				<tr>
 					<td>Password</td>
 					<td><input type="password" name="password" size="12"
-						maxlength="12"></td>
+						maxlength="12" required></td>
 				</tr>
 				<tr>
 					<td>User Type</td>
 					<td><input type="text" name="userType" size="12"
-						maxlength="12"></td>
+						maxlength="12" required></td>
 				</tr>
 			</table>
 			<input type="submit" name="regLogin" value="Save">

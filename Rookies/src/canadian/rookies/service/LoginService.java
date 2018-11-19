@@ -56,18 +56,12 @@ public class LoginService {
 	}
 
 	public void saveNewUser(String uN, String pass, String type) throws Exception {
-		jdbc = new Jdbc();// ("+id+",'"+empName+"','"+ address+"',"+age+")";
+		jdbc = new Jdbc();
 		conn = jdbc.getConnection();
-		s = jdbc.getStatement(conn);//(UserName,UserPassword,UserType)
-		StringBuffer sql = new StringBuffer();
-		//String query="insert INTO UserLogin VALUES ('"+uN+"','"+pass+"','"+type+"')";
+		s = jdbc.getStatement(conn);
+		StringBuffer sql = new StringBuffer();		
 		sql.append("insert INTO UserLogin VALUES ('"+uN+"','"+pass+"','"+type+"')");
-//		sql.append('"uN"');
-//		sql.append(",");
-//		sql.append(pass);
-//		sql.append(",");
-//		sql.append(type);
-//		sql.append(")");
+
 		try {
 			jdbc.executeSQL(s, sql.toString());
 
