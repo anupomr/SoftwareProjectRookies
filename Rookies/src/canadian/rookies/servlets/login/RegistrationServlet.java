@@ -1,32 +1,28 @@
-package canadian.rookies.servlets.business;
+package canadian.rookies.servlets.login;
 
 import java.io.IOException;
-import java.util.List;
-
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-
-import canadian.rookies.model.Login;
+import javax.servlet.http.HttpSession;
 
 import canadian.rookies.service.LoginService;
 
 /**
- * Servlet implementation class LoginServlet
+ * Servlet implementation class Registration
  */
-@WebServlet("/Login")
-public class LoginServlet extends HttpServlet {
+@WebServlet("/registration")
+public class RegistrationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 	private static final String ERROR_PAGE = "errorPage.jsp";
-	private static final String INDEX_PAGE = "login/login.jsp";
-	private static final String BSNS_INDEX_PAGE = "business/bsnsList.jsp";
+	private static final String NEXT_PAGE = "login/login.jsp";
 
 	/**
 	 * @see HttpServlet#HttpServlet()
 	 */
-	public LoginServlet() {
+	public RegistrationServlet() {
 		super();
 		// TODO Auto-generated constructor stub
 	}
@@ -37,7 +33,8 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		request.getRequestDispatcher(INDEX_PAGE).forward(request, response);
+		// TODO Auto-generated method stub
+		response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	/**
@@ -46,24 +43,24 @@ public class LoginServlet extends HttpServlet {
 	 */
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		String responsePage = ERROR_PAGE;
+		String responsePage = NEXT_PAGE;
+		HttpSession session=request.getSession();
 		try {
 			LoginService service = new LoginService();
-//			List<Login> loginList = LoginService.getInstance().getLogin();
-			List<Login> loginList = service.getLogin();
-
-			String userName = request.getParameter("userName");
-			String password = request.getParameter("password");
-			for (Login login : loginList) {
-				if (login.getUserName().equals(userName) && login.getPassword().equals(password)) {
-					request.setAttribute("userName", login.getUserName());
-					responsePage = BSNS_INDEX_PAGE;
-				} else {
-					responsePage = INDEX_PAGE;
-				}
-			}
+			String userName = (String) session.getAttribute("userName");
+			String firstName = request.getParameter("firstName");
+			String lastName = request.getParameter("lastName");
+			String address = request.getParameter("address");
+			String postalCode = request.getParameter("postalCode");
+			String state = request.getParameter("state");
+			String city = request.getParameter("city");
+			String email = request.getParameter("email");
+			String phNumber = request.getParameter("phNumber");
+			int phNum=Integer.parseInt(phNumber);
+			service.registration(userName, firstName, lastName, address, postalCode, state, city, phNum, email);
 
 		} catch (Exception e) {
+			responsePage = ERROR_PAGE;
 			request.setAttribute("errorMessage", e.getMessage());
 		} finally {
 			request.getRequestDispatcher(responsePage).forward(request, response);

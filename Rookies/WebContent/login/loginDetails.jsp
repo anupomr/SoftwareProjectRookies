@@ -12,8 +12,8 @@
 		Welcome to <i>Canadian Rookie's</i> web
 	</h3>
 	<fieldset>
-		<p>Please use the form below for Registration.
-		<form method="post" action="${pageContext.request.contextPath}/newUser">
+		<p>Please Fill the form below for ${sessionScope.userName} Registration.
+		<form method="post" action="${pageContext.request.contextPath}/registration">
 			<table border="">
 				<tr>		
 					<td>First Name</td>

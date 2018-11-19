@@ -6,7 +6,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
 
-import canadian.rookies.model.BusinessCategory;
+
 import canadian.rookies.model.Login;
 import canadian.rookies.utilities.Jdbc;
 
@@ -61,6 +61,27 @@ public class LoginService {
 		s = jdbc.getStatement(conn);
 		StringBuffer sql = new StringBuffer();		
 		sql.append("insert INTO UserLogin VALUES ('"+uN+"','"+pass+"','"+type+"')");
+
+		try {
+			jdbc.executeSQL(s, sql.toString());
+
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbc.closeResultSet(rs);
+			jdbc.closeStatement(s);
+			jdbc.closeConnection(conn);
+
+		}
+	}
+	public void registration(String userName,String firstName, String lastName, String address,String postalCode, String state, String city, int phNum,String email) 
+			throws Exception {
+		jdbc = new Jdbc();
+		conn = jdbc.getConnection();
+		s = jdbc.getStatement(conn);
+		StringBuffer sql = new StringBuffer();		
+		sql.append("insert INTO UserDetails(UserName,FirstName,LastName,FullAddress,PostalCode,State,City,PhonNumber,Email) "
+				+ "VALUES ('"+userName+"','"+firstName+"','"+lastName+"','"+address+"','"+postalCode+"','"+state+"','"+city+"',"+phNum+",'"+email+"')");
 
 		try {
 			jdbc.executeSQL(s, sql.toString());
