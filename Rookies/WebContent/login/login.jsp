@@ -30,7 +30,7 @@
 			</table>
 			<input type="submit" name="login" value="Login">
 			<p>
-				<a href="${pageContext.request.contextPath}/ForgetPassword.jsp">Forget
+				<a href="${pageContext.request.contextPath}/login/fogetPassword.jsp">Forget
 					password</a>
 			</p>
 		</form>

@@ -95,5 +95,29 @@ public class LoginService {
 
 		}
 	}
+	@SuppressWarnings("finally")
+	public String passwordRecovery(String userName) throws Exception {
+		jdbc = new Jdbc();
+		conn = jdbc.getConnection();
+		s = jdbc.getStatement(conn);
+		String list = "";
+		StringBuffer sql = new StringBuffer();
+		sql.append("select * from UserLogin where UserName='"+userName+"'");
+
+		try {
+			rs = jdbc.getResultSet(s, sql.toString());
+			while (rs.next()) {
+				
+				list=rs.getString("UserPassword");
+			}
+		} catch (Exception e) {
+			e.printStackTrace();
+		} finally {
+			jdbc.closeResultSet(rs);
+			jdbc.closeStatement(s);
+			jdbc.closeConnection(conn);
+			return list;
+		}
+	}
 
 }
