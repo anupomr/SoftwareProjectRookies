@@ -1,4 +1,4 @@
-package canadian.rookies.servlets.business;
+package canadian.rookies.servlets.login;
 
 import java.io.IOException;
 import java.util.List;
