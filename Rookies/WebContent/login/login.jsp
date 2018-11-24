@@ -7,15 +7,16 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="LoginStyle.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body  id="grad1">
+<div id="allPage">
 	<h3>
-		Welcome to <i>Canadian Rookie's</i> web
+	 <i>Canadian Rookie's</i> Login!!
 	</h3>
 
 	<fieldset>
 		<p>If you are a member, please use the form below to sign in.
 		<form method="post" action="${pageContext.request.contextPath}/Login">
-			<table border="0">
+			<table>
 				<tr>
 		
 					<td>User name</td>
@@ -42,5 +43,6 @@
 				to join</a>.
 		</p>
 	</fieldset>
+	</div>
 </body>
 </html>

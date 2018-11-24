@@ -1,5 +1,30 @@
 
-th {
-    background-color: #4CAF50;
-    color: white;
+td {
+    //background-color: #4CAF50;
+    
+    color: #CCFFFF;
+    
+}
+#grad1 {
+    height: 1024px;
+   
+    font-family: Arial, Helvetica, sans-serif;
+    color: #660033;
+    background-image: url("WebContent/images/city-c.jpeg");
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+}
+#allPage {
+    border: 3px solid #008000;
+    padding: 3px 5px 5px 5px;
+    border-radius: 20px;
+    box-shadow: 3px 3px 3px #008000;
+    width: 280px;
+    margin-right: auto;
+    margin-left: auto;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #99FF66;
+    font-size: medium;
+   background-color: #661349;
+    
 }

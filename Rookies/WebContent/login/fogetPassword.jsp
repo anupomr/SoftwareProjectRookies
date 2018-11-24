@@ -7,7 +7,8 @@
 <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
 <link href="LoginStyle.css" type="text/css" rel="stylesheet">
 </head>
-<body>
+<body id="grad1">
+<div id="allPage">
 	<h3>
 		Welcome to <i>Canadian Rookie's</i> web
 	</h3>
@@ -30,6 +31,6 @@
 			</p>
 		</form>
 	</fieldset>
-	
+	</div>
 </body>
 </html>
